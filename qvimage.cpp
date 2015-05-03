@@ -260,20 +260,20 @@ private:
     void mousePressEvent(QMouseEvent *e)
         {
             ac.move_enter(e->x(), e->y());
-            update();
+            QWidget::update();
         }
 
     void mouseReleaseEvent(QMouseEvent *e)
         {
             ac.move_leave(e->x(), e->y());
-            update();
+            QWidget::update();
         }
 
 
     void mouseMoveEvent(QMouseEvent *e)
         {
             ac.move_move(e->x(), e->y());
-            update();
+            QWidget::update();
         }
 };
 
