@@ -233,6 +233,8 @@ public:
 private:
     area_clip ac;
     QImage img;
+    QImage scaled_img;// = this->img.scaled( ac.src_scaled_w, ac.src_scaled_h );
+
 
     void paintEvent( QPaintEvent *event );
     void wheelEvent(QWheelEvent *);
@@ -241,6 +243,7 @@ private:
             this->ac.set_dst_size( r->size().width(), r->size().height() );
             this->ac.set_fix_size();
             ac.f( ac.percent, ac.focus_x, ac.focus_y );
+            this->scaled_img = this->img.scaled( ac.src_scaled_w, ac.src_scaled_h );
             update();
         }
 
@@ -273,7 +276,6 @@ private:
 void image_viewer::paintEvent( QPaintEvent *event )
 {
     QPainter pt(this);
-    QImage scaled_img = this->img.scaled( ac.src_scaled_w, ac.src_scaled_h );
 
     pt.drawImage( ac.draw_x, ac.draw_y, scaled_img, ac.clip_left - ac.m_x, ac.clip_top-ac.m_y, ac.clip_right-ac.m_x, ac.clip_bottom-ac.m_y );
 }
@@ -288,6 +290,7 @@ void image_viewer::wheelEvent( QWheelEvent *wheel )
         f = -ac.percent * 0.1;
     }
     ac.f( ac.percent+f, wheel->x(), wheel->y() );
+    this->scaled_img = this->img.scaled( ac.src_scaled_w, ac.src_scaled_h );
     update();
 }
 
