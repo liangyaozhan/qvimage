@@ -9,7 +9,7 @@ find_package(Qt4 4.4.3 REQUIRED QtGui QtXml)
 add_executable(qvimage qvimage.cpp)
 target_link_libraries(qvimage Qt4::QtGui Qt4::QtXml)
 
-target_compile_options(qvimage PUBLIC -g -O0 )
+#target_compile_options(qvimage PUBLIC -g -O0 )
 
 install( TARGETS qvimage
   RUNTIME DESTINATION bin

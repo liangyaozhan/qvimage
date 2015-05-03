@@ -253,14 +253,12 @@ private:
     void mousePressEvent(QMouseEvent *e)
         {
             ac.move_enter(e->x(), e->y());
-            std::cout<< "mousePressEvent " << std::endl;
             update();
         }
 
     void mouseReleaseEvent(QMouseEvent *e)
         {
             ac.move_leave(e->x(), e->y());
-            std::cout<< "mouseReleaseEvent " << std::endl;
             update();
         }
 
@@ -268,7 +266,6 @@ private:
     void mouseMoveEvent(QMouseEvent *e)
         {
             ac.move_move(e->x(), e->y());
-            std::cout<< "mouseMoveEvent " << std::endl;
             update();
         }
 };
