@@ -134,11 +134,15 @@ public:
             int _y = y - m_y0;
             if ( clip_left - _x >= 0
                  && clip_right - _x < src_scaled_w
-                 && clip_top - _y >= 0
-                 && clip_bottom - _y < src_scaled_h
                 )
             {
                 m_x = _x;
+            }
+            if (
+                  clip_top - _y >= 0
+                 && clip_bottom - _y < src_scaled_h
+                )
+            {
                 m_y = _y;
             }
         }
@@ -214,11 +218,11 @@ public:
         {
             int sw, sh;
 
-            int ret = this->img.load( QString::fromUtf8(filename) );
+            int ret = this->img.load( QString::fromLocal8Bit(filename) );
 
             if ( !ret )
             {
-                QMessageBox *ms =  new QMessageBox(QMessageBox::Information, QString("qvimage failed"), QString::fromUtf8(filename) );
+                QMessageBox *ms =  new QMessageBox(QMessageBox::Information, QString("qvimage failed"), QString::fromLocal8Bit( filename ) );
                 ms->setStandardButtons(QMessageBox::Ok);
                 ms->show();
             }
